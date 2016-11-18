@@ -1,0 +1,23 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="ink-page.html">
+
+<dom-module id="ink-doc">
+  <template>
+    <style>
+      @media print {
+        @page {
+          size: A4;
+        }
+      }
+    </style>
+
+    <content>
+    </content>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ink-doc',
+    });
+  </script>
+</dom-module>

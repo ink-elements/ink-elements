@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <title>Ink Demo</title>
+
+  <!-- Imports polyfill -->
+  <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+
+  <!-- Imports custom element -->
+  <link rel="import" href="ink-doc.html">
+
+</head>
+<body>
+
+  <!-- Runs custom element -->
+  <ink-doc>
+
+    <ink-page>
+
+      <section>
+        <h1>Ink Elements Documentation</h1>
+        <p><strong>Ink Elements</strong> is a <a href="https://www.polymer-project.org/1.0/">Polymer</a> library of custom elements for publishing documents via HTML and CSS. Features include:</p>
+
+        <ul>
+          <li><strong>Printable</strong></li>
+          <li><strong>Page Numbering</strong></li>
+        </ul>
+
+        <section>
+          <h2>Getting Started</h2>
+
+          <p>Install the component using <a href="http://bower.io/">Bower</a>:</p>
+
+          <pre><code class="language-sh">$ bower install ink-elements --save</code></pre>
+
+          <p>Then import the polyfill:</p>
+
+          <pre><code class="language-html">&lt;script src=&quot;bower_components/webcomponentsjs/webcomponents-lite.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+          <p>Import custom element:</p>
+
+          <pre><code class="language-html">&lt;link rel=&quot;import&quot; href=&quot;bower_components/rgladwell/ink-doc.html&quot;&gt;</code></pre>
+        </section>
+
+        <section>
+          <h2>Usage</h2>
+
+          <p>An Ink document starts with a <code>ink-doc</code> root element:</p>
+
+          <pre><code class="language-html">&lt;ink-doc&gt;&lt;/ink-doc&gt;</code></pre>
+
+          <p>Each document contains one-or-more pages:</p>
+
+          <pre><code class="language-html">&lt;ink-doc&gt;
+  &lt;ink-page&gt;
+  &lt;/ink-page&gt;
+
+  &lt;ink-page&gt;
+  &lt;/ink-page&gt;
+&lt;/ink-doc&gt;
+          </code></pre>
+  
+          <p>Then simply place your regular HTML content inside the <code>ink-page</code> elements.</p>
+        </section>
+        <section>
+          <h3>Publishing</h3>
+
+          <p>To publish as a PDF the simplest, most reliable way is via Chrome's PDF preview feature:</p>
+
+           <ol>
+             <li>Open in Chrome</li>
+             <li>Click File -> Print...</li>
+             <li>Click on `More settings`</li>
+             <li>Set `Paper size` to `A4`</li>
+             <li>Set `Margins` to `None</li>
+             <li>Click in `Open PDF in Preview`</li>
+             <li>Then click File -> Save...</li>
+           </ol>
+        </section>
+      </section>
+
+    </ink-page>
+
+    <ink-page>
+
+      <section>
+        <h1>Page 2</h1>
+      </section>
+
+    </ink-page>
+
+  </ink-doc>
+
+</body>
+</html>

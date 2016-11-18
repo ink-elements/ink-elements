@@ -1,0 +1,55 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="ink-page">
+  <template>
+    <style>
+      :host {
+        page-break-inside: avoid;
+      }
+
+      ::content {
+        display: block;
+        background: white;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+        width: 21cm;
+        height: 29.7cm;
+        margin: 1cm auto;
+        padding: 1cm;
+        overflow: hidden;
+        position: relative;
+        counter-increment: ink-page-number;
+      }
+
+      :host:after {
+        content: "Page " counter(ink-page-number);
+        margin-bottom: 1em;
+        position: absolute;
+        bottom: 1em;
+        left: 0;
+        text-align: center;
+        width: 100%;
+        font-size: smaller;
+      };
+
+      @media print {
+        ::content {
+          box-shadow: none;
+        }
+
+        ::content a {
+          color: black;
+          text-decoration: none;
+        }
+      }
+    </style>
+
+    <content>
+    </content>
+  </template>
+  
+  <script>
+    Polymer({
+      is: 'ink-page',
+    });
+  </script>
+</dom-module>
