@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="ink-page.html">
+<link rel="import" href="ink-page-ref.html">
 
 <dom-module id="ink-doc">
   <template>
@@ -18,6 +19,15 @@
   <script>
     Polymer({
       is: 'ink-doc',
+
+      ready: function() {
+        var pages = this.querySelectorAll('ink-page');
+
+        pages.forEach(function(page, index) {
+          var pageNumber = index + 1;
+          page.setAttribute('number', pageNumber);
+        });
+      }
     });
   </script>
 </dom-module>

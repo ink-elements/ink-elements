@@ -1,6 +1,6 @@
 {
   "name": "ink-elements",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Custom elements for publishing documents via HTML and CSS",
   "license": "MIT",
   "main": "ink-doc.html",

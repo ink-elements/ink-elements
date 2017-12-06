@@ -26,6 +26,7 @@
         <ul>
           <li><strong>Printable</strong></li>
           <li><strong>Page Numbering</strong></li>
+          <li><strong>Page References</strong></li>
         </ul>
 
         <section>
@@ -62,8 +63,20 @@
 &lt;/ink-doc&gt;
           </code></pre>
   
-          <p>Then simply place your regular HTML content inside the <code>ink-page</code> elements.</p>
+          <p>Then simply place your regular HTML content inside the <code>ink-page</code> elements. For </p>
+
+          <section>
+            <h4>Page References</h4>
+
+            <p>You can reference another page with the <code>ink-page-ref</code> component:</p>
+
+          <pre><code class="language-html">&lt;p&gt;See page &lt;ink-page-ref ref="html-id" /&gt; for more information. &lt;/p&gt;
+          </code></pre>
+
+          <p>See page <ink-page-ref ref="page2"></ink-page-ref> for more information.</p>
+          </section>
         </section>
+
         <section>
           <h3>Publishing</h3>
 
@@ -85,7 +98,7 @@
 
     <ink-page>
 
-      <section>
+      <section id="page2">
         <h1>Page 2</h1>
       </section>
 

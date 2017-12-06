@@ -1,0 +1,40 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="ink-page-ref">
+  <template>
+    <style>
+      :host {
+        display: inline;
+      }
+    </style>
+
+    <content><a href="#"{{pageReference}}>{{pageReference}}</a></content></template>
+
+  <script>
+    Polymer({
+      is: 'ink-page-ref',
+
+      properties: {
+        ref: String
+      },
+
+      attached: function() {
+
+        function findParent(element, name) {
+          if(element.tagName.toLowerCase() === name.toLowerCase()) return element;
+          else return findParent(element.parentNode, name);
+        }
+
+        var element = document.getElementById(this.ref);
+        var page = findParent(element, 'ink-page');
+
+        if(page && page.getAttribute('number')) {
+          this.pageReference = page.getAttribute('number');
+        } else {
+          console.error("[ink-page-ref] Could not find page for reference '" + this.ref + "'")
+        }
+      },
+
+    });
+  </script>
+</dom-module>
