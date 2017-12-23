@@ -27,7 +27,7 @@ Or [download as ZIP](https://github.com/rgladwell/ink-elements/archive/master.zi
 2. Import custom element:
 
     ```html
-    <link rel="import" href="bower_components/rgladwell/ink-doc.html">
+    <link rel="import" href="bower_components/ink-elements/ink-doc.html">
     ```
 
 3. Start using it!
