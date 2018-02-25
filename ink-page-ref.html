@@ -8,33 +8,43 @@
       }
     </style>
 
-    <content><a href="#"{{pageReference}}>{{pageReference}}</a></content></template>
+    <a href="#{{ref}}">{{pageReference}}</a>
+  </template>
 
   <script>
-    Polymer({
-      is: 'ink-page-ref',
+    class InkPageReference extends Polymer.Element {
+      static get is() { return 'ink-page-ref'; }
 
-      properties: {
-        ref: String
-      },
-
-      attached: function() {
-
-        function findParent(element, name) {
-          if(element.tagName.toLowerCase() === name.toLowerCase()) return element;
-          else return findParent(element.parentNode, name);
+      static get properties() {
+        return {
+          ref: String,
+          pageReference: String
         }
+      }
 
-        var element = document.getElementById(this.ref);
-        var page = findParent(element, 'ink-page');
+      connectedCallback() {
+        super.connectedCallback();
 
-        if(page && page.getAttribute('number')) {
-          this.pageReference = page.getAttribute('number');
-        } else {
-          console.error("[ink-page-ref] Could not find page for reference '" + this.ref + "'")
-        }
-      },
+        Polymer.RenderStatus.beforeNextRender(this, () => {
+          function findParent(element, name) {
+            if(element.tagName.toLowerCase() === name.toLowerCase()) return element;
+            else return findParent(element.parentNode, name);
+          }
 
-    });
+          const element = document.getElementById(this.ref);
+          const page = findParent(element, 'ink-page');
+
+          if(page && page.getAttribute('number')) {
+            const number  = page.getAttribute('number');
+            this.pageReference = number;
+          } else {
+            console.error('[ink-page-ref] Could not find page for reference "' + this.ref + '" in document')
+          }
+        });
+      }
+
+    }
+
+    customElements.define(InkPageReference.is, InkPageReference);
   </script>
 </dom-module>

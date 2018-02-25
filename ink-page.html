@@ -5,9 +5,6 @@
     <style>
       :host {
         page-break-inside: avoid;
-      }
-
-      ::content {
         display: block;
         background: white;
         box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
@@ -32,28 +29,31 @@
       };
 
       @media print {
-        ::content {
+        :host {
           box-shadow: none;
         }
 
-        ::content a {
+        :host a {
           color: black;
           text-decoration: none;
         }
       }
     </style>
 
-    <content>
-    </content>
+    <slot></slot>
   </template>
-  
-  <script>
-    Polymer({
-      is: 'ink-page',
 
-      properties: {
-        page: Number
+  <script>
+    class InkPage extends Polymer.Element {
+      static get is() { return 'ink-page'; }
+
+      static get properties() {
+        return {
+          page: Number
+        };
       }
-    });
+    }
+
+    customElements.define(InkPage.is, InkPage);
   </script>
 </dom-module>
