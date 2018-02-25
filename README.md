@@ -20,28 +20,28 @@ Or [download as ZIP](https://github.com/rgladwell/ink-elements/archive/master.zi
 
 1. Import polyfill:
 
-    ```html
-    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-    ```
+```html
+<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+```
 
 2. Import custom element:
 
-    ```html
-    <link rel="import" href="bower_components/ink-elements/ink-doc.html">
-    ```
+```html
+<link rel="import" href="bower_components/ink-elements/ink-doc.html">
+```
 
 3. Start using it!
 
-    ```html
-    <ink-doc>
-      <ink-page>
-        <h1>Title</h2>
-      </ink-page>
-      <ink-page>
-        <h1>Chapter 1</h2>
-      </ink-page>
-    </ink-doc>
-    ```
+```html
+<ink-doc>
+  <ink-page>
+    <h1>Title</h2>
+  </ink-page>
+  <ink-page>
+    <h1>Chapter 1</h2>
+  </ink-page>
+</ink-doc>
+```
 
 ## Development
 
@@ -49,21 +49,21 @@ In order to run it locally you'll need to fetch some dependencies and a basic se
 
 1. Install [bower](http://bower.io/) & [polyserve](https://npmjs.com/polyserve):
 
-    ```sh
-    $ npm install -g bower polyserve
-    ```
+```sh
+$ npm install -g bower polyserve
+```
 
 2. Install local dependencies:
 
-    ```sh
-    $ bower install
-    ```
+```sh
+$ bower install
+```
 
 3. Start development server and open `http://localhost:8080/components/ink-elements/`.
 
-    ```sh
-    $ polyserve
-    ```
+```sh
+$ polyserve
+```
 
 ## License
 
