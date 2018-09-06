@@ -6,10 +6,10 @@
   <title>Ink Demo</title>
 
   <!-- Imports polyfill -->
-  <script src="../webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
   <!-- Imports custom element -->
-  <link rel="import" href="ink-doc.html">
+  <script type="module" src="ink-doc.js"></script>
 
 </head>
 <body>
@@ -32,17 +32,17 @@
         <section>
           <h2>Getting Started</h2>
 
-          <p>Install the component using <a href="http://bower.io/">Bower</a>:</p>
+          <p>Install the component:</p>
 
-          <pre><code class="language-sh">$ bower install ink-elements --save</code></pre>
+          <pre><code class="language-sh">$ npm install ink-elements --save</code></pre>
 
           <p>Then import the polyfill:</p>
 
-          <pre><code class="language-html">&lt;script src=&quot;bower_components/webcomponentsjs/webcomponents-lite.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+          <pre><code class="language-html">&lt;script src=&quot;node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js&quot;&gt;&lt;/script&gt;</code></pre>
 
           <p>Import custom element:</p>
 
-          <pre><code class="language-html">&lt;link rel=&quot;import&quot; href=&quot;bower_components/rgladwell/ink-doc.html&quot;&gt;</code></pre>
+          <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;node_modules/ink-elements/ink-doc.js&quot;&gt;</code></pre>
         </section>
 
         <section>

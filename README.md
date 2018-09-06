@@ -8,10 +8,10 @@ Custom elements for publishing documents via HTML and CSS.
 
 ## Install
 
-Install the component using [Bower](http://bower.io/):
+Install the component:
 
 ```sh
-$ bower install ink-elements --save
+$ npm install ink-elements --save
 ```
 
 Or [download as ZIP](https://github.com/rgladwell/ink-elements/archive/master.zip).
@@ -21,13 +21,13 @@ Or [download as ZIP](https://github.com/rgladwell/ink-elements/archive/master.zi
 1. Import polyfill:
 
 ```html
-<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+<script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 ```
 
 2. Import custom element:
 
 ```html
-<link rel="import" href="bower_components/ink-elements/ink-doc.html">
+<script type="module" src="node_modules/ink-elements/ink-doc.js"></script>
 ```
 
 3. Start using it!
@@ -45,25 +45,30 @@ Or [download as ZIP](https://github.com/rgladwell/ink-elements/archive/master.zi
 
 ## Development
 
-In order to run it locally you'll need to fetch some dependencies and a basic server setup.
+In order to run, test and modify this project locally you'll need to follow these steps:
 
-1. Install [bower](http://bower.io/) & [polyserve](https://npmjs.com/polyserve):
+1.  Install pre-requisites for Polymer CLI (git, npm, Node.js).
 
-```sh
-$ npm install -g bower polyserve
-```
+    [Full instructions are on the Polymer website.](https://www.polymer-project.org/3.0/docs/tools/polymer-cli).
 
-2. Install local dependencies:
+2.  Install Polymer CLI:
 
-```sh
-$ bower install
-```
+        npm install -g polymer-cli@next
 
-3. Start development server and open `http://localhost:8080/components/ink-elements/`.
+    [Full instructions are on the Polymer website.](https://www.polymer-project.org/3.0/docs/tools/polymer-cli).
 
-```sh
-$ polyserve
-```
+3.  Clone this repo:
+
+        git clone https://github.com/rgladwell/ink-elements.git
+
+4.  Change directory to the top-level project folder and install project dependencies:
+
+        cd ink-elements
+        npm install
+
+5.  To preview your element, run the Polymer development server from the top-level project folder:
+
+        polymer serve --open
 
 ## License
 

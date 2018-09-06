@@ -1,7 +1,9 @@
-<link rel="import" href="../polymer/polymer.html">
+import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js';
 
-<dom-module id="ink-page">
-  <template>
+class InkPage extends PolymerElement {
+
+  static get template() {
+    return html`
     <style>
       :host {
         page-break-inside: avoid;
@@ -42,20 +44,16 @@
       }
     </style>
 
-    <slot></slot>
-  </template>
+    <slot></slot>`;
+  }
 
-  <script>
-    class InkPage extends Polymer.Element {
-      static get is() { return 'ink-page'; }
+  static get is() { return 'ink-page'; }
 
-      static get properties() {
-        return {
-          page: Number
-        };
-      }
-    }
+  static get properties() {
+    return {
+      page: Number
+    };
+  }
+}
 
-    customElements.define(InkPage.is, InkPage);
-  </script>
-</dom-module>
+customElements.define(InkPage.is, InkPage);
