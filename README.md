@@ -4,7 +4,7 @@ Custom elements for publishing documents via HTML and CSS.
 
 ## Demo
 
-[Check it live!](http://rgladwell.github.io/ink-elements)
+[Check it live!](http://ink-elements.github.io/ink-elements)
 
 ## Install
 
@@ -14,7 +14,7 @@ Install the component:
 $ npm install ink-elements --save
 ```
 
-Or [download as ZIP](https://github.com/rgladwell/ink-elements/archive/master.zip).
+Or [download as ZIP](https://github.com/ink-elements/ink-elements/archive/master.zip).
 
 ## Usage
 
@@ -59,7 +59,7 @@ In order to run, test and modify this project locally you'll need to follow thes
 
 3.  Clone this repo:
 
-        git clone https://github.com/rgladwell/ink-elements.git
+        git clone https://github.com/ink-elements/ink-elements.git
 
 4.  Change directory to the top-level project folder and install project dependencies:
 
