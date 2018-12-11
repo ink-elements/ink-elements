@@ -28,7 +28,7 @@ class InkPage extends PolymerElement {
         text-align: center;
         width: 100%;
         font-size: smaller;
-      };
+      }
 
       @media print {
         :host {
