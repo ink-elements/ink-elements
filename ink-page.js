@@ -33,7 +33,6 @@ class InkPage extends PolymerElement {
       @media print {
         :host {
           margin: 0;
-          overflow: hidden;
           box-shadow: none;
         }
 
