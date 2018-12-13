@@ -10,8 +10,8 @@ class InkPage extends PolymerElement {
         display: block;
         background: white;
         box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
-        width: 21cm;
-        height: 29.68cm;
+        width: 210mm;
+        height: 297mm;
         margin: 1cm auto;
         padding: 1cm;
         overflow: hidden;
