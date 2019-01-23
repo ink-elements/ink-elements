@@ -1,4 +1,4 @@
-# Ink Elements
+# Ink Elements [![Build Status](https://travis-ci.org/ink-elements/ink-elements.svg?branch=master)](https://travis-ci.org/ink-elements/ink-elements)
 
 Custom elements for publishing documents via HTML and CSS.
 
@@ -69,6 +69,10 @@ In order to run, test and modify this project locally you'll need to follow thes
 5.  To preview your element, run the Polymer development server from the top-level project folder:
 
         polymer serve --open
+
+6.  To verify code style run:
+
+        yarn build
 
 ## License
 

@@ -1,6 +1,6 @@
-import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js';
-import './ink-page.js';
-import './ink-page-ref.js';
+import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js'
+import './ink-page.js'
+import './ink-page-ref.js'
 
 class InkDocument extends PolymerElement {
 
@@ -14,20 +14,20 @@ class InkDocument extends PolymerElement {
       }
     </style>
 
-    <slot></slot>`;
+    <slot></slot>`
   }
 
-  static get is() { return 'ink-doc'; }
+  static get is() { return 'ink-doc' }
 
   ready() {
-    var pages = this.querySelectorAll('ink-page');
+    var pages = this.querySelectorAll('ink-page')
 
     pages.forEach(function(page, index) {
-      var pageNumber = index + 1;
-      page.setAttribute('number', pageNumber);
-    });
+      var pageNumber = index + 1
+      page.setAttribute('number', pageNumber)
+    })
   }
 
 }
 
-customElements.define(InkDocument.is, InkDocument);
+customElements.define(InkDocument.is, InkDocument)

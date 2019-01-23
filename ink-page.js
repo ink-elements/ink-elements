@@ -1,4 +1,4 @@
-import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js';
+import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js'
 
 class InkPage extends PolymerElement {
 
@@ -43,16 +43,16 @@ class InkPage extends PolymerElement {
       }
     </style>
 
-    <slot></slot>`;
+    <slot></slot>`
   }
 
-  static get is() { return 'ink-page'; }
+  static get is() { return 'ink-page' }
 
   static get properties() {
     return {
       page: Number
-    };
+    }
   }
 }
 
-customElements.define(InkPage.is, InkPage);
+customElements.define(InkPage.is, InkPage)
