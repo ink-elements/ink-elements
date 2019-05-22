@@ -13,7 +13,7 @@
     "type-detect": "1.0.0"
   },
   "main": "ink-doc.js",
-  "author": "Ricardo Gladwell <ricardo@gladwell.me> (https://gladwell.me)",
+  "author": "R.G. Wood <ric@grislyeye.com> (https://grislyeye.com)",
   "license": "MIT",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
