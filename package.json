@@ -32,6 +32,7 @@
     "yaml-lint": "^1.2.4"
   },
   "scripts": {
-    "build": "yamllint .travis.yml && polymer lint && eslint *.js *.html"
+    "build": "yamllint .travis.yml && polymer lint && eslint *.js *.html",
+    "start": "polymer serve --open"
   }
 }
