@@ -1,6 +1,6 @@
 # Ink Elements [![Build Status](https://travis-ci.org/ink-elements/ink-elements.svg?branch=master)](https://travis-ci.org/ink-elements/ink-elements)
 
-Custom elements for publishing documents via HTML and CSS.
+Custom elements for publishing documents via HTML and CSS. Requires use of [paged.js](https://www.pagedmedia.org/paged-js/) Paged Media polyfill.
 
 ## Demo
 
@@ -18,29 +18,23 @@ Or [download as ZIP](https://github.com/ink-elements/ink-elements/archive/master
 
 ## Usage
 
-1. Import polyfill:
+1. Import polyfills:
 
 ```html
+<script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
 <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 ```
 
 2. Import custom element:
 
 ```html
-<script type="module" src="node_modules/ink-elements/ink-doc.js"></script>
+<script type="module" src="node_modules/ink-elements/ink-page-ref.js"></script>
 ```
 
 3. Start using it!
 
 ```html
-<ink-doc>
-  <ink-page>
-    <h1>Title</h2>
-  </ink-page>
-  <ink-page>
-    <h1>Chapter 1</h2>
-  </ink-page>
-</ink-doc>
+<p>See page <ink-page-ref ref="html-id"></ink-page-ref> for more information.</p>;
 ```
 
 ## Development

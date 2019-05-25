@@ -5,106 +5,78 @@
   <meta charset="utf-8">
   <title>Ink Documentation</title>
 
+  <!-- imports paged media polyfill -->
+  <script src="node_modules/pagedjs/dist/paged.polyfill.js"></script>
+
   <!-- Imports polyfill -->
   <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
   <!-- Imports custom element -->
-  <script type="module" src="ink-doc.js"></script>
+  <script type="module" src="ink-page-ref.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="main.css">
 
 </head>
 <body>
 
-  <!-- Runs custom element -->
-  <ink-doc>
+  <h1>Ink Elements Documentation</h1>
 
-    <ink-page>
+  <p><strong>Ink Elements</strong> is a <a href="https://www.polymer-project.org/1.0/">Polymer</a> library of custom elements for publishing documents via HTML and CSS. Features include:</p>
 
-      <section>
-        <h1>Ink Elements Documentation</h1>
-        <p><strong>Ink Elements</strong> is a <a href="https://www.polymer-project.org/1.0/">Polymer</a> library of custom elements for publishing documents via HTML and CSS. Features include:</p>
+  <ul>
+    <li><strong>Page References</strong></li>
+  </ul>
 
-        <ul>
-          <li><strong>Printable</strong></li>
-          <li><strong>Page Numbering</strong></li>
-          <li><strong>Page References</strong></li>
-        </ul>
+  <p><em>Note:</em> Ink Elements require the <a href="https://gitlab.pagedmedia.org/tools/pagedjs">paged.js</a> Paged Media polyfill.
 
-        <section>
-          <h2>Getting Started</h2>
+  <section>
+    <h2>Getting Started</h2>
 
-          <p>Install the component:</p>
+    <p>Install the component:</p>
 
-          <pre><code class="language-sh">$ npm install ink-elements --save</code></pre>
+    <pre><code class="language-sh">$ npm install ink-elements --save</code></pre>
 
-          <p>Then import the polyfill:</p>
+    <p>Then import polyfills:</p>
 
-          <pre><code class="language-html">&lt;script src=&quot;node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js&quot;&gt;&lt;/script&gt;</code></pre>
+    <pre><code class="language-html">&lt;script src=&quot;node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/pagedjs/dist/paged.polyfill.js&quot;&gt;&lt;/script&gt;</code></pre>
 
-          <p>Import custom element:</p>
+    <p>Import custom element:</p>
 
-          <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;node_modules/ink-elements/ink-doc.js&quot;&gt;</code></pre>
-        </section>
+    <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;node_modules/ink-elements/ink-doc.js&quot;&gt;</code></pre>
+  </section>
 
-        <section>
-          <h2>Usage</h2>
+  <section>
+    <h3>Page References</h3>
 
-          <p>An Ink document starts with a <code>ink-doc</code> root element:</p>
+      <p>You can reference another page with the <code>ink-page-ref</code> component:</p>
 
-          <pre><code class="language-html">&lt;ink-doc&gt;&lt;/ink-doc&gt;</code></pre>
+    <pre><code class="language-html">&lt;p&gt;See page &lt;ink-page-ref ref="html-id"&gt;&lt;/ink-page-ref&gt; for more information. &lt;/p&gt;
+    </code></pre>
 
-          <p>Each document contains one-or-more pages:</p>
+    <p>See page <ink-page-ref ref="page2"></ink-page-ref> for more information.</p>
+  </section>
 
-          <pre><code class="language-html">&lt;ink-doc&gt;
-  &lt;ink-page&gt;
-  &lt;/ink-page&gt;
+  <section>
+    <h3>Publishing</h3>
 
-  &lt;ink-page&gt;
-  &lt;/ink-page&gt;
-&lt;/ink-doc&gt;
-          </code></pre>
+    <p>To publish as a PDF the simplest, most reliable way is via Chrome's PDF preview feature:</p>
 
-          <p>Then simply place your regular HTML content inside the <code>ink-page</code> elements. For </p>
+     <ol>
+       <li>Open in Chrome</li>
+       <li>Click File -> Print...</li>
+       <li>Click on `More settings`</li>
+       <li>Set `Paper size` to `A4`</li>
+       <li>Set `Margins` to `None</li>
+       <li>Click in `Open PDF in Preview`</li>
+       <li>Then click File -> Save...</li>
+     </ol>
+  </section>
+</section>
 
-          <section>
-            <h4>Page References</h4>
-
-            <p>You can reference another page with the <code>ink-page-ref</code> component:</p>
-
-          <pre><code class="language-html">&lt;p&gt;See page &lt;ink-page-ref ref="html-id" /&gt; for more information. &lt;/p&gt;
-          </code></pre>
-
-          <p>See page <ink-page-ref ref="page2"></ink-page-ref> for more information.</p>
-          </section>
-        </section>
-
-        <section>
-          <h3>Publishing</h3>
-
-          <p>To publish as a PDF the simplest, most reliable way is via Chrome's PDF preview feature:</p>
-
-           <ol>
-             <li>Open in Chrome</li>
-             <li>Click File -> Print...</li>
-             <li>Click on `More settings`</li>
-             <li>Set `Paper size` to `A4`</li>
-             <li>Set `Margins` to `None</li>
-             <li>Click in `Open PDF in Preview`</li>
-             <li>Then click File -> Save...</li>
-           </ol>
-        </section>
-      </section>
-
-    </ink-page>
-
-    <ink-page>
-
-      <section id="page2">
-        <h1>Page 2</h1>
-      </section>
-
-    </ink-page>
-
-  </ink-doc>
+<section id="page2">
+  <h1>Page 2</h1>
+</section>
 
 </body>
 </html>

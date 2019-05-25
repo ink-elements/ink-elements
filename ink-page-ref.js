@@ -27,16 +27,11 @@ class InkPageReference extends PolymerElement {
     super.connectedCallback()
 
     beforeNextRender(this, () => {
-      function findParent(element, name) {
-        if (element.tagName.toLowerCase() === name.toLowerCase()) return element
-        else return findParent(element.parentNode, name)
-      }
-
       const element = document.getElementById(this.ref)
-      const page = findParent(element, 'ink-page')
+      const page = element.closest('div[class~="pagedjs_page"]')
 
-      if (page && page.getAttribute('number')) {
-        const number = page.getAttribute('number')
+      if (page && page.getAttribute('data-page-number')) {
+        const number = page.getAttribute('data-page-number')
         this.pageReference = number
       } else {
         console.error('[ink-page-ref] Could not find page for reference "' + this.ref + '" in document')
