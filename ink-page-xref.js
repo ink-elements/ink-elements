@@ -1,7 +1,7 @@
 import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js'
 import { beforeNextRender } from '../@polymer/polymer/lib/utils/render-status.js'
 
-class InkPageReference extends PolymerElement {
+class InkPageCrossReference extends PolymerElement {
 
   static get template() {
     return html`
@@ -14,7 +14,7 @@ class InkPageReference extends PolymerElement {
     <a href="#{{ref}}">{{pageReference}}</a>`
   }
 
-  static get is() { return 'ink-page-ref' }
+  static get is() { return 'ink-page-xref' }
 
   static get properties() {
     return {
@@ -34,11 +34,11 @@ class InkPageReference extends PolymerElement {
         const number = page.getAttribute('data-page-number')
         this.pageReference = number
       } else {
-        console.error('[ink-page-ref] Could not find page for reference "' + this.ref + '" in document')
+        console.error('[ink-page-xref] Could not find page for reference "' + this.ref + '" in document')
       }
     })
   }
 
 }
 
-customElements.define(InkPageReference.is, InkPageReference)
+customElements.define(InkPageCrossReference.is, InkPageCrossReference)

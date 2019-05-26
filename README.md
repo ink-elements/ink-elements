@@ -28,13 +28,13 @@ Or [download as ZIP](https://github.com/ink-elements/ink-elements/archive/master
 2. Import custom element:
 
 ```html
-<script type="module" src="node_modules/ink-elements/ink-page-ref.js"></script>
+<script type="module" src="node_modules/ink-elements/ink-page-xref.js"></script>
 ```
 
 3. Start using it!
 
 ```html
-<p>See page <ink-page-ref ref="html-id"></ink-page-ref> for more information.</p>;
+<p>See page <ink-page-xref ref="html-id"></ink-page-xref> for more information.</p>;
 ```
 
 ## Development
