@@ -5,13 +5,8 @@
   <meta charset="utf-8">
   <title>Ink Documentation</title>
 
-  <!-- imports paged media polyfill -->
-  <script src="node_modules/pagedjs/dist/paged.polyfill.js"></script>
-
-  <!-- Imports polyfill -->
-  <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-
-  <!-- Imports custom element -->
+  <!-- Imports custom elements -->
+  <script type="module" src="ink-doc.js"></script>
   <script type="module" src="ink-page-xref.js"></script>
 
   <link rel="stylesheet" type="text/css" href="main.css">
@@ -19,64 +14,59 @@
 </head>
 <body>
 
-  <h1>Ink Elements Documentation</h1>
+  <ink-doc>
+    <h1>Ink Elements Documentation</h1>
 
-  <p><strong>Ink Elements</strong> is a <a href="https://www.polymer-project.org/1.0/">Polymer</a> library of custom elements for publishing documents via HTML and CSS. Features include:</p>
+    <p><strong>Ink Elements</strong> is a <a href="https://www.polymer-project.org/1.0/">Polymer</a> library of custom elements for publishing documents via HTML and CSS. Features include:</p>
 
-  <ul>
-    <li><strong>Page References</strong></li>
-  </ul>
+    <ul>
+      <li><strong>Page References</strong></li>
+    </ul>
 
-  <p><em>Note:</em> Ink Elements require the <a href="https://gitlab.pagedmedia.org/tools/pagedjs">paged.js</a> Paged Media polyfill.
+    <p><em>Note:</em> Ink Elements require the <a href="https://gitlab.pagedmedia.org/tools/pagedjs">paged.js</a> Paged Media polyfill.
 
-  <section>
-    <h2>Getting Started</h2>
+    <section>
+      <h2>Getting Started</h2>
 
-    <p>Install the component:</p>
+      <p>Install the component:</p>
 
-    <pre><code class="language-sh">$ npm install ink-elements --save</code></pre>
+      <pre><code class="language-sh">$ npm install ink-elements --save</code></pre>
 
-    <p>Then import polyfills:</p>
+      <p>Import custom element:</p>
 
-    <pre><code class="language-html">&lt;script src=&quot;node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://unpkg.com/pagedjs/dist/paged.polyfill.js&quot;&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;node_modules/ink-elements/ink-doc.js&quot;&gt;</code></pre>
+    </section>
 
-    <p>Import custom element:</p>
+    <section>
+      <h3>Page References</h3>
 
-    <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;node_modules/ink-elements/ink-doc.js&quot;&gt;</code></pre>
-  </section>
+        <p>You can reference another page with the <code>ink-page-xref</code> component:</p>
 
-  <section>
-    <h3>Page References</h3>
+      <pre><code class="language-html">&lt;p&gt;See page &lt;ink-page-xref ref="html-id"&gt;&lt;/ink-page-xref&gt;.&lt;/p&gt;</code></pre>
 
-      <p>You can reference another page with the <code>ink-page-xref</code> component:</p>
+      <p>See page <ink-page-xref ref="page2"></ink-page-xref> for more information.</p>
+    </section>
 
-    <pre><code class="language-html">&lt;p&gt;See page &lt;ink-page-xref ref="html-id"&gt;&lt;/ink-page-xref&gt; for more information. &lt;/p&gt;
-    </code></pre>
+    <section>
+      <h3>Publishing</h3>
 
-    <p>See page <ink-page-xref ref="page2"></ink-page-xref> for more information.</p>
-  </section>
+      <p>To publish as a PDF the simplest, most reliable way is via Chrome's PDF preview feature:</p>
 
-  <section>
-    <h3>Publishing</h3>
+       <ol>
+         <li>Open in Chrome</li>
+         <li>Click File -> Print...</li>
+         <li>Click on `More settings`</li>
+         <li>Set `Paper size` to `A4`</li>
+         <li>Set `Margins` to `None</li>
+         <li>Click in `Open PDF in Preview`</li>
+         <li>Then click File -> Save...</li>
+       </ol>
+    </section>
 
-    <p>To publish as a PDF the simplest, most reliable way is via Chrome's PDF preview feature:</p>
-
-     <ol>
-       <li>Open in Chrome</li>
-       <li>Click File -> Print...</li>
-       <li>Click on `More settings`</li>
-       <li>Set `Paper size` to `A4`</li>
-       <li>Set `Margins` to `None</li>
-       <li>Click in `Open PDF in Preview`</li>
-       <li>Then click File -> Save...</li>
-     </ol>
-  </section>
-</section>
-
-<section id="page2">
-  <h1>Page 2</h1>
-</section>
+    <section id="page2">
+      <h1>Page 2</h1>
+    </section>
+  </ink-doc>
 
 </body>
 </html>
