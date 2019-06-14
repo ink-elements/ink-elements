@@ -1,17 +1,12 @@
-import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js'
-import { beforeNextRender } from '../@polymer/polymer/lib/utils/render-status.js'
+import { LitElement, html, css } from 'lit-element'
 
-class InkPageCrossReference extends PolymerElement {
+class InkPageCrossReference extends LitElement {
 
-  static get template() {
-    return html`
-    <style>
-      :host {
-        display: inline;
-      }
-    </style>
-
-    <a href="#{{ref}}">{{pageReference}}</a>`
+  static get styles() {
+    return css`
+    :host {
+      display: inline;
+    }`
   }
 
   static get is() { return 'ink-page-xref' }
@@ -23,9 +18,12 @@ class InkPageCrossReference extends PolymerElement {
     }
   }
 
+  render() {
+    return html`<a href="#${this.ref}">${this.pageReference}</a>`
+  }
+
   connectedCallback() {
     super.connectedCallback()
-    beforeNextRender(this, () => this._updateReference(document))
     const inkDocument = document.querySelector('ink-doc')
     if (inkDocument) inkDocument.addEventListener('paged-doc', this._onPagedDocument.bind(this))
   }
@@ -41,7 +39,6 @@ class InkPageCrossReference extends PolymerElement {
     if (page && page.getAttribute('data-page-number')) {
       const number = page.getAttribute('data-page-number')
       this.pageReference = number
-      this.notifyPath('pageReference', number)
     } else {
       console.error('[<ink-page-xref>] Could not find page for reference "' + this.ref + '" in document')
     }
