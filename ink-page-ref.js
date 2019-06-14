@@ -1,17 +1,12 @@
-import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js'
-import { beforeNextRender } from '../@polymer/polymer/lib/utils/render-status.js'
+import { LitElement, html, css } from 'lit-element'
 
-class InkPageReference extends PolymerElement {
+class InkPageReference extends LitElement {
 
-  static get template() {
-    return html`
-    <style>
-      :host {
-        display: inline;
-      }
-    </style>
-
-    <a href="#{{ref}}">{{pageReference}}</a>`
+  static get styles() {
+    return css`
+    :host {
+      display: inline;
+    }`
   }
 
   static get is() { return 'ink-page-ref' }
@@ -23,25 +18,31 @@ class InkPageReference extends PolymerElement {
     }
   }
 
+  render() {
+    return html`<a href="#${this.ref}">${this.pageReference}</a>`
+  }
+
   connectedCallback() {
     super.connectedCallback()
+    const inkDocument = document.querySelector('ink-doc')
+    if (inkDocument) inkDocument.addEventListener('paged-doc', this._onPagedDocument.bind(this))
+  }
 
-    beforeNextRender(this, () => {
-      function findParent(element, name) {
-        if (element.tagName.toLowerCase() === name.toLowerCase()) return element
-        else return findParent(element.parentNode, name)
-      }
+  _onPagedDocument(event) {
+    function findParent(element, name) {
+      if (element.tagName.toLowerCase() === name.toLowerCase()) return element
+      else return findParent(element.parentNode, name)
+    }
 
-      const element = document.getElementById(this.ref)
-      const page = findParent(element, 'ink-page')
+    const element = document.getElementById(this.ref)
+    const page = findParent(element, 'ink-page')
 
-      if (page && page.getAttribute('number')) {
-        const number = page.getAttribute('number')
-        this.pageReference = number
-      } else {
-        console.error('[ink-page-ref] Could not find page for reference "' + this.ref + '" in document')
-      }
-    })
+    if (page && page.getAttribute('number')) {
+      const number = page.getAttribute('number')
+      this.pageReference = number
+    } else {
+      console.error('[ink-page-ref] Could not find page for reference "' + this.ref + '" in document')
+    }
   }
 
 }

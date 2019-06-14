@@ -1,49 +1,45 @@
-import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js'
+import { LitElement, html, css } from 'lit-element'
 
-class InkPage extends PolymerElement {
+class InkPage extends LitElement {
 
-  static get template() {
-    return html`
-    <style>
+  static get styles() {
+    return css`
+    :host {
+      page-break-inside: avoid;
+      display: block;
+      background: white;
+      box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+      width: 210mm;
+      height: 297mm;
+      margin: 1cm auto;
+      padding: 1cm;
+      overflow: hidden;
+      position: relative;
+      counter-increment: ink-page-number;
+    }
+
+    :host:after {
+      content: "Page " counter(ink-page-number);
+      margin-bottom: 1em;
+      position: absolute;
+      bottom: 1em;
+      left: 0;
+      text-align: center;
+      width: 100%;
+      font-size: smaller;
+    }
+
+    @media print {
       :host {
-        page-break-inside: avoid;
-        display: block;
-        background: white;
-        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
-        width: 210mm;
-        height: 297mm;
-        margin: 1cm auto;
-        padding: 1cm;
-        overflow: hidden;
-        position: relative;
-        counter-increment: ink-page-number;
+        margin: 0;
+        box-shadow: none;
       }
 
-      :host:after {
-        content: "Page " counter(ink-page-number);
-        margin-bottom: 1em;
-        position: absolute;
-        bottom: 1em;
-        left: 0;
-        text-align: center;
-        width: 100%;
-        font-size: smaller;
+      :host a {
+        color: black;
+        text-decoration: none;
       }
-
-      @media print {
-        :host {
-          margin: 0;
-          box-shadow: none;
-        }
-
-        :host a {
-          color: black;
-          text-decoration: none;
-        }
-      }
-    </style>
-
-    <slot></slot>`
+    }`
   }
 
   static get is() { return 'ink-page' }
@@ -53,6 +49,11 @@ class InkPage extends PolymerElement {
       page: Number
     }
   }
+
+  render() {
+    return html`<slot></slot>`
+  }
+
 }
 
 customElements.define(InkPage.is, InkPage)
