@@ -5,7 +5,7 @@
     "polymer",
     "web-components"
   ],
-  "version": "0.6.0",
+  "version": "0.7.0",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
@@ -13,12 +13,11 @@
     "type-detect": "1.0.0"
   },
   "main": "ink-doc.js",
-  "module": "ink-doc.js",
   "author": "R.G. Wood <ric@grislyeye.com> (https://grislyeye.com)",
   "license": "MIT",
   "dependencies": {
-    "pagedjs": "^0.1.34",
-    "lit-element": "^2.1.0"
+    "@polymer/polymer": "^3.0.0",
+    "@webcomponents/webcomponentsjs": "^1.0.20"
   },
   "devDependencies": {
     "eslint": "^5.12.1",

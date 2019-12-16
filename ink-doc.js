@@ -1,42 +1,31 @@
-import { LitElement, html, css } from 'lit-element'
-import { Previewer } from '../pagedjs/dist/paged.esm.js'
+import { PolymerElement, html } from '../@polymer/polymer/polymer-element.js'
+import './ink-page.js'
+import './ink-page-ref.js'
 
-class PagedDocument extends Event {
-  constructor(name, flow) {
-    super(name)
-    this.flow = flow
-  }
-}
+class InkDocument extends PolymerElement {
 
-class InkDocument extends LitElement {
+  static get template() {
+    return html`
+    <style>
+      @media print {
+        @page {
+          size: A4;
+        }
+      }
+    </style>
 
-  static get styles() {
-    return css`
-    @page {
-      size: A4
-    }
-
-    #document {
-      display: none;
-    }`
+    <slot></slot>`
   }
 
   static get is() { return 'ink-doc' }
 
-  render() {
-    return html`
-    <div id="document">
-      <slot></slot>
-    </div>`
-  }
+  ready() {
+    var pages = this.querySelectorAll('ink-page')
 
-  connectedCallback() {
-    super.connectedCallback()
-    const paged = new Previewer()
-    paged.preview(document.querySelector('ink-doc').innerHTML).then((flow) => {
-      this.dispatchEvent(new PagedDocument('paged-doc', flow))
+    pages.forEach(function(page, index) {
+      var pageNumber = index + 1
+      page.setAttribute('number', pageNumber)
     })
-
   }
 
 }
