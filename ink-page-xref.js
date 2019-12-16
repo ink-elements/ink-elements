@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element'
 
-class InkPageReference extends LitElement {
+class InkPageCrossReference extends LitElement {
 
   static get styles() {
     return css`
@@ -9,7 +9,7 @@ class InkPageReference extends LitElement {
     }`
   }
 
-  static get is() { return 'ink-page-ref' }
+  static get is() { return 'ink-page-xref' }
 
   static get properties() {
     return {
@@ -47,4 +47,4 @@ class InkPageReference extends LitElement {
 
 }
 
-customElements.define(InkPageReference.is, InkPageReference)
+customElements.define(InkPageCrossReference.is, InkPageCrossReference)

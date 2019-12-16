@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element'
 import './ink-page.js'
-import './ink-page-ref.js'
+import './ink-page-xref.js'
 
 class InkDocument extends LitElement {
 
