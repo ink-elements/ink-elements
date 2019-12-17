@@ -13,17 +13,25 @@ class InkDocument extends LitElement {
 
   static get is() { return 'ink-doc' }
 
+  constructor() {
+    super()
+    this._pageCount = 0
+  }
+
   render() {
     return html`<div><slot></slot></div>`
   }
 
   connectedCallback() {
     super.connectedCallback()
-    const pages = this.querySelectorAll('ink-page')
+    const doc = this
+    const pages = doc.querySelectorAll('ink-page')
 
     pages.forEach(function(page, index) {
-      var pageNumber = index + 1
-      page.setAttribute('number', pageNumber)
+      if(page.id.trim().toLowerCase() !== 'cover') {
+        doc._pageCount++
+        page.setAttribute('number', doc._pageCount)
+      }
     })
 
     const pagedDoc = new CustomEvent('paged-doc', {})

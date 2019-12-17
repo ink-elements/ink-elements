@@ -15,6 +15,9 @@ class InkPage extends LitElement {
       padding: 1cm;
       overflow: hidden;
       position: relative;
+    }
+
+    :host(.content) {
       counter-increment: ink-page-number;
     }
 
