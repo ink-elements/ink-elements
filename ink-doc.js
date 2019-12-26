@@ -28,7 +28,7 @@ class InkDocument extends LitElement {
     const pages = doc.querySelectorAll('ink-page')
 
     pages.forEach(function(page, index) {
-      if(page.id.trim().toLowerCase() !== 'cover') {
+      if (page.id.trim().toLowerCase() !== 'cover') {
         doc._pageCount++
         page.setAttribute('number', doc._pageCount)
       }
