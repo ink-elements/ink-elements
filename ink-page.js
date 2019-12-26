@@ -10,7 +10,7 @@ class InkPage extends LitElement {
       background: white;
       box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
       width: 210mm;
-      height: 296mm;
+      height: 296.8mm;
       margin: 1cm auto;
       padding: 1cm;
       overflow: hidden;
