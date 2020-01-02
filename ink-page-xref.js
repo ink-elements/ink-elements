@@ -29,22 +29,20 @@ class InkPageCrossReference extends LitElement {
   }
 
   _onPagedDocument(event) {
-    function findParent(element, name) {
-      if (element.tagName.toLowerCase() === name.toLowerCase()) return element
-      else return findParent(element.parentNode, name)
-    }
-
-    const element = document.getElementById(this.ref)
-    const page = findParent(element, 'ink-page')
-
-    if (page && page.getAttribute('number')) {
-      const number = page.getAttribute('number')
-      this.pageReference = number
-    } else {
-      console.error('[ink-page-ref] Could not find page for reference "' + this.ref + '" in document')
-    }
+    this._updateReference(event.flow.pagesArea)
   }
 
+  _updateReference(content) {
+    const element = content.querySelector(`#${this.ref}`)
+    const page = element.closest('div[class~="pagedjs_page"]')
+
+    if (page && page.getAttribute('data-page-number')) {
+      const number = page.getAttribute('data-page-number')
+      this.pageReference = number
+    } else {
+      console.error('[<ink-page-xref>] Could not find page for reference "' + this.ref + '" in document')
+    }
+  }
 }
 
 customElements.define(InkPageCrossReference.is, InkPageCrossReference)

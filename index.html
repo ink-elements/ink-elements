@@ -5,103 +5,68 @@
   <meta charset="utf-8">
   <title>Ink Documentation</title>
 
-  <!-- Imports custom element -->
+  <!-- Imports custom elements -->
   <script type="module" src="ink-doc.js"></script>
+  <script type="module" src="ink-page-xref.js"></script>
+  <script type="module" src="../@aybolit/bootstrap/dist-web/index.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="main.css">
 
 </head>
 <body>
 
-  <!-- Runs custom element -->
   <ink-doc>
+    <h1>Ink Elements Documentation</h1>
 
-    <ink-page>
+    <p><strong>Ink Elements</strong> is a library of custom elements for publishing documents via HTML and CSS. Features include:</p>
 
-      <section>
-        <h1>Ink Elements Documentation</h1>
+    <ul>
+      <li><strong>Page References</strong></li>
+    </ul>
 
-        <p><strong>Ink Elements</strong> is a library of custom elements for publishing documents via HTML and CSS. Features include:</p>
+    <section>
+      <h2>Getting Started</h2>
 
-        <ul>
-          <li><strong>Printable</strong></li>
-          <li><strong>Page Numbering</strong></li>
-          <li><strong>Page References</strong></li>
-        </ul>
+      <p>Install the component:</p>
 
-        <section>
-          <h2>Getting Started</h2>
+      <pre><code class="language-sh">$ npm install ink-elements --save</code></pre>
 
-          <p>Install the component:</p>
+      <p>Import custom element:</p>
 
-          <pre><code class="language-sh">$ npm install ink-elements --save</code></pre>
+      <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;node_modules/ink-elements/ink-doc.js&quot;&gt;</code></pre>
+    </section>
 
-          <p>Then import the polyfill:</p>
+    <section>
+      <h3>Page References</h3>
 
-          <pre><code class="language-html">&lt;script src=&quot;node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js&quot;&gt;&lt;/script&gt;</code></pre>
+        <p>You can reference another page with the <code>ink-page-xref</code> component:</p>
 
-          <p>Import custom element:</p>
+      <pre><code class="language-html">&lt;p&gt;See page &lt;ink-page-xref ref="html-id"&gt;&lt;/ink-page-xref&gt;.&lt;/p&gt;</code></pre>
 
-          <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;node_modules/ink-elements/ink-doc.js&quot;&gt;</code></pre>
-        </section>
+      <p>See page <ink-page-xref ref="page2"></ink-page-xref> for more information.</p>
+    </section>
 
-        <section>
-          <h2>Usage</h2>
+    <section>
+      <h3>Publishing</h3>
 
-          <p>An Ink document starts with a <code>ink-doc</code> root element:</p>
+      <p>To publish as a PDF the simplest, most reliable way is via Chrome's PDF preview feature:</p>
 
-          <pre><code class="language-html">&lt;ink-doc&gt;&lt;/ink-doc&gt;</code></pre>
+       <ol>
+         <li>Open in Chrome</li>
+         <li>Click File -> Print...</li>
+         <li>Click on `More settings`</li>
+         <li>Set `Paper size` to `A4`</li>
+         <li>Set `Margins` to `None</li>
+         <li>Click in `Open PDF in Preview`</li>
+         <li>Then click File -> Save...</li>
+       </ol>
+    </section>
 
-          <p>Each document contains one-or-more pages:</p>
+    <section id="page2">
+      <h1>Page 2</h1>
 
-          <pre><code class="language-html">&lt;ink-doc&gt;
-  &lt;ink-page&gt;
-  &lt;/ink-page&gt;
-
-  &lt;ink-page&gt;
-  &lt;/ink-page&gt;
-&lt;/ink-doc&gt;
-          </code></pre>
-
-          <p>Then simply place your regular HTML content inside the <code>ink-page</code> elements. For </p>
-
-          <section>
-            <h4>Page References</h4>
-
-            <p>You can reference another page with the <code>ink-page-ref</code> component:</p>
-
-          <pre><code class="language-html">&lt;p&gt;See page &lt;ink-page-ref ref="html-id" /&gt; for more information. &lt;/p&gt;
-          </code></pre>
-
-          <p>See page <ink-page-xref ref="page2"></ink-page-xref> for more information.</p>
-          </section>
-        </section>
-
-        <section>
-          <h3>Publishing</h3>
-
-          <p>To publish as a PDF the simplest, most reliable way is via Chrome's PDF preview feature:</p>
-
-           <ol>
-             <li>Open in Chrome</li>
-             <li>Click File -> Print...</li>
-             <li>Click on `More settings`</li>
-             <li>Set `Paper size` to `A4`</li>
-             <li>Set `Margins` to `None</li>
-             <li>Click in `Open PDF in Preview`</li>
-             <li>Then click File -> Save...</li>
-           </ol>
-        </section>
-      </section>
-
-    </ink-page>
-
-    <ink-page>
-
-      <section id="page2">
-        <h1>Page 2</h1>
-      </section>
-
-    </ink-page>
-
+      <abs-button link="https://slashdot.org">Button</abs-button>
+    </section>
   </ink-doc>
 
 </body>

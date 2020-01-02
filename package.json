@@ -5,7 +5,7 @@
     "polymer",
     "web-components"
   ],
-  "version": "1.0.3",
+  "version": "2.0.0",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
@@ -17,7 +17,9 @@
   "author": "R.G. Wood <ric@grislyeye.com> (https://grislyeye.com)",
   "license": "MIT",
   "dependencies": {
-    "lit-element": "^2.2.1"
+    "@aybolit/bootstrap": "^0.1.0",
+    "lit-element": "^2.2.1",
+    "pagedjs": "^0.1.35"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

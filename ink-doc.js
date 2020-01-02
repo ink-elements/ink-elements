@@ -1,6 +1,13 @@
 import { LitElement, html, css } from 'lit-element'
-import './ink-page.js'
 import './ink-page-xref.js'
+import { Previewer } from '../pagedjs/dist/paged.esm.js'
+
+class PagedDocument extends CustomEvent {
+  constructor(name, flow) {
+    super(name)
+    this.flow = flow
+  }
+}
 
 class InkDocument extends LitElement {
 
@@ -13,29 +20,25 @@ class InkDocument extends LitElement {
 
   static get is() { return 'ink-doc' }
 
-  constructor() {
-    super()
-    this._pageCount = 0
+  render() {
+    return html`
+    <div id="document">
+    </div>`
   }
 
-  render() {
-    return html`<div><slot></slot></div>`
+  get shadowDocument() {
+    return this.shadowRoot.getElementById('document')
   }
 
   connectedCallback() {
     super.connectedCallback()
-    const doc = this
-    const pages = doc.querySelectorAll('ink-page')
+    const paged = new Previewer()
+    const stylesheets = Array.from(document.styleSheets).map(css => css.href)
 
-    pages.forEach(function(page, index) {
-      if (page.id.trim().toLowerCase() !== 'cover') {
-        doc._pageCount++
-        page.setAttribute('number', doc._pageCount)
-      }
+    paged.preview(document.querySelector('ink-doc').innerHTML, stylesheets, this.shadowDocument).then((flow) => {
+      document.querySelector('ink-doc').remove()
+      this.dispatchEvent(new PagedDocument('paged-doc', flow))
     })
-
-    const pagedDoc = new CustomEvent('paged-doc', {})
-    this.dispatchEvent(pagedDoc)
   }
 
 }
