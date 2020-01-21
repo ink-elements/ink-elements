@@ -25,14 +25,14 @@ class InkPageCrossReference extends LitElement {
   connectedCallback() {
     super.connectedCallback()
     const inkDocument = document.querySelector('ink-doc')
-    if (inkDocument) inkDocument.addEventListener('paged-doc', this._onPagedDocument.bind(this))
+    if (inkDocument) inkDocument.addEventListener('paged-doc', this.__onPagedDocument.bind(this))
   }
 
-  _onPagedDocument(event) {
-    this._updateReference(event.flow.pagesArea)
+  __onPagedDocument(event) {
+    this.__updateReference(event.flow.pagesArea)
   }
 
-  _updateReference(content) {
+  __updateReference(content) {
     const element = content.querySelector(`#${this.ref}`)
     const page = element.closest('div[class~="pagedjs_page"]')
 
