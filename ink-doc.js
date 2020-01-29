@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element'
 import './ink-page-xref.js'
-import { Previewer } from '../pagedjs/dist/paged.esm.js'
+import { Previewer } from 'pagedjs/dist/paged.esm.js'
 
 class PagedDocument extends CustomEvent {
   constructor(name, flow) {
