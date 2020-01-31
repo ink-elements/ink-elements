@@ -6,6 +6,14 @@ class InkPageCrossReference extends LitElement {
     return css`
     :host {
       display: inline;
+    }
+
+    @media print {
+      :host a {
+        text-decoration: none;
+        color: black;
+        font-weight: normal;
+      }
     }`
   }
 
