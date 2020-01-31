@@ -5,7 +5,7 @@
     "polymer",
     "web-components"
   ],
-  "version": "2.0.0",
+  "version": "2.0.1",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
