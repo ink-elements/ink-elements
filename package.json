@@ -5,7 +5,7 @@
     "polymer",
     "web-components"
   ],
-  "version": "2.0.1",
+  "version": "2.0.2",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
@@ -18,16 +18,16 @@
   "license": "MIT",
   "dependencies": {
     "@aybolit/bootstrap": "^0.1.0",
-    "lit-element": "^2.2.1",
-    "pagedjs": "^0.1.35"
+    "lit-element": "^2.3.1",
+    "pagedjs": "^0.1.40"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-html": "^6.0.0",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint": "^7.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-html": "^6.0.2",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-lit": "^1.2.0",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "polymer-cli": "^1.9.11",
