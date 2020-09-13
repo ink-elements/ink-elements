@@ -22,19 +22,19 @@
     "pagedjs": "^0.1.42"
   },
   "devDependencies": {
+    "es-dev-server": "^1.57.4",
     "eslint": "^7.3.1",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-html": "^6.0.2",
     "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-lit": "^1.2.0",
+    "eslint-plugin-lit": "^1.2.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "polymer-cli": "^1.9.11",
     "yaml-lint": "^1.2.4"
   },
   "scripts": {
-    "build": "yamllint .travis.yml && polymer lint && eslint *.js *.html",
-    "start": "polymer serve --open"
+    "build": "yamllint .travis.yml && eslint *.js *.html",
+    "start": "es-dev-server --node-resolve --watch --open"
   }
 }
