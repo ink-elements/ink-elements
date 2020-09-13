@@ -5,69 +5,27 @@
   <meta charset="utf-8">
   <title>Ink Documentation</title>
 
-  <!-- Imports custom elements -->
-  <script type="module" src="ink-doc.js"></script>
-  <script type="module" src="ink-page-xref.js"></script>
-  <script type="module" src="node_modules/@aybolit/bootstrap/dist-web/index.js"></script>
+  <script src="node_modules/pagedjs/dist/paged.polyfill.js"></script>
+  <script type="module" src="ink-table-of-contents.js"></script>
 
   <link rel="stylesheet" type="text/css" href="main.css">
 
 </head>
-<body>
+<body id="content">
 
-  <ink-doc>
-    <h1>Ink Elements Documentation</h1>
+  <h1>Ink Elements Documentation</h1>
 
-    <p><strong>Ink Elements</strong> is a library of custom elements for publishing documents via HTML and CSS. Features include:</p>
+  <p><strong>Ink Elements</strong> is a library of custom elements for publishing documents via HTML and CSS. Features include:</p>
 
-    <ul>
-      <li><strong>Page References</strong></li>
-    </ul>
+  <h1>Table of Contents</h1>
 
-    <section>
-      <h2>Getting Started</h2>
+  <ink-table-of-contents titles='["h2","h3"]'></ink-table-of-contents>
 
-      <p>Install the component:</p>
+  <div id="my-toc-content"></div>
 
-      <pre><code class="language-sh">$ npm install ink-elements --save</code></pre>
+  <h2>Header 2</h2>
 
-      <p>Import custom element:</p>
-
-      <pre><code class="language-html">&lt;script type=&quot;module&quot; src=&quot;node_modules/ink-elements/ink-doc.js&quot;&gt;</code></pre>
-    </section>
-
-    <section>
-      <h3>Page References</h3>
-
-        <p>You can reference another page with the <code>ink-page-xref</code> component:</p>
-
-      <pre><code class="language-html">&lt;p&gt;See page &lt;ink-page-xref ref="html-id"&gt;&lt;/ink-page-xref&gt;.&lt;/p&gt;</code></pre>
-
-      <p>See page <ink-page-xref ref="page2"></ink-page-xref> for more information.</p>
-    </section>
-
-    <section>
-      <h3>Publishing</h3>
-
-      <p>To publish as a PDF the simplest, most reliable way is via Chrome's PDF preview feature:</p>
-
-       <ol>
-         <li>Open in Chrome</li>
-         <li>Click File -> Print...</li>
-         <li>Click on `More settings`</li>
-         <li>Set `Paper size` to `A4`</li>
-         <li>Set `Margins` to `None</li>
-         <li>Click in `Open PDF in Preview`</li>
-         <li>Then click File -> Save...</li>
-       </ol>
-    </section>
-
-    <section id="page2">
-      <h1>Page 2</h1>
-
-      <abs-button link="https://slashdot.org">Button</abs-button>
-    </section>
-  </ink-doc>
+  <h3>Header 3</h3>
 
 </body>
 </html>
