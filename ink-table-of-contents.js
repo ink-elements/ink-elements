@@ -11,24 +11,17 @@ class InkTableOfContents extends LitElement {
 
   static get properties() {
     return {
+      ref: String,
       titles: Array
     }
-  }
-
-  render() {
-    return html`
-    `
   }
 
   connectedCallback() {
     super.connectedCallback()
 
-    console.log(this.titles)
-
     window.PagedConfig = {
       before: this.createTableOfContents({
-        content: window.document.querySelector('#content'),
-        tocElement: '#my-toc-content',
+        content: window.document.querySelector(this.ref),
         titleElements: JSON.parse(this.titles)
       })
     }
@@ -36,10 +29,9 @@ class InkTableOfContents extends LitElement {
 
   createTableOfContents(config) {
     const content = config.content;
-    const tocElement = config.tocElement;
     const titleElements = config.titleElements;
 
-    let tocElementDiv = content.querySelector(tocElement);
+    let tocElementDiv = this.shadowRoot;
     let tocUl = document.createElement("ul");
     tocUl.id = "list-toc-generated";
     tocElementDiv.appendChild(tocUl);
