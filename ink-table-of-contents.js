@@ -86,7 +86,6 @@ class InkTableOfContents extends LitElement {
         tocNewLi.innerHTML = '<a href="#' + tocElement.id + '">' + tocElement.innerHTML + '</a>';
         tocUl.appendChild(tocNewLi);
     }
-
   }
 
 }
