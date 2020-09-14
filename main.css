@@ -19,3 +19,7 @@
 #page-2 {
   break-before: page;
 }
+
+ink-table-of-contents {
+  width: 100%;
+}

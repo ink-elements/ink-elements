@@ -1,16 +1,27 @@
 import { LitElement, html, css } from 'lit-element'
 
-class InkTableOfContents extends LitElement {
+export class InkTableOfContents extends LitElement {
 
   static get styles() {
     return css`
-      #table-of-contents {
-        display: table;
+      table#table-of-contents {
+        display: flex;
+        flex-direction: column;
       }
 
-      ul#table-of-contents {
-        padding-left: 0;
-        list-style: outside none none;
+      table#table-of-contents tr {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      table#table-of-contents tr td.spacing {
+        flex-grow: 2;
+
+        background-image: radial-gradient(circle, currentcolor 1px, transparent 1px);
+        background-position-y: bottom;
+        background-size: 1ex 3px;
+        background-repeat: repeat-x;
+        height: 1em;
       }
     `
   }
@@ -48,8 +59,8 @@ class InkTableOfContents extends LitElement {
   render() {
     const findHeaders = (el) => Array.from(el.querySelectorAll('h1,h2,h3,h4,h5,h6'))
 
-    const contents = window.document.querySelectorAll(this.ref)
-    const titles = Array.from(contents).map(findHeaders).flat()
+    const contents = Array.from(window.document.querySelectorAll(this.ref))
+    const titles = contents.map(findHeaders).flat()
     const pageNumbers = titles.map(InkTableOfContents.pageNumber)
 
     const headersRange =
@@ -80,8 +91,9 @@ class InkTableOfContents extends LitElement {
   renderEntry(el, level, pageNumber) {
     return html`
       <tr class="entry level-${level}">
-        <td><a href="#${el.id}">${el.innerHTML}</a></td>
-        <td><a href="#${el.id}">Page ${pageNumber}</a></td>
+        <td class="title"><a href="#${el.id}">${el.innerHTML}</a></td>
+        <td class="spacing"></td>
+        <td class="page-number"><a href="#${el.id}">${pageNumber}</a></td>
       </tr>`
   }
 
