@@ -41,11 +41,25 @@ class InkTableOfContents extends LitElement {
     const contents = window.document.querySelectorAll(this.ref)
     const titles = Array.from(contents).map(findHeaders).flat()
 
+    const headersRange =
+      titles
+        .map((el) => el.tagName)
+        .map((h) => /H(\d{1})/.exec(h))
+        .filter((re) => re)
+        .map((re) => re[1])
+        .map((str) => parseInt(str))
+
+    const titlesWithLevel = headersRange.map((level, i) => [titles[i], level])
+
     return html`
       <ul id="table-of-contents">
-        ${titles.map((node) => html`<li><a href="#${node.id}">${node.innerHTML}</a></li>`)}
+        ${titlesWithLevel.map((tl) => this.renderEntry(tl[0], tl[1]))}
       <ul>
     `
+  }
+
+  renderEntry(el, level) {
+    return html`<li class="level-${level}"><a href="#${el.id}">${el.innerHTML}</a></li>`
   }
 
 }
