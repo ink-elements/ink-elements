@@ -24,6 +24,16 @@ class InkTableOfContents extends LitElement {
     }
   }
 
+  static pageNumber(element) {
+    const page = element.closest('div[class~="pagedjs_page"]')
+
+    if (page && page.getAttribute('data-page-number')) {
+      return page.getAttribute('data-page-number')
+    } else {
+      console.error(`[<ink-table-of-contents>] Could not find page for reference ${element.id} in document`)
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback()
 
@@ -40,6 +50,7 @@ class InkTableOfContents extends LitElement {
 
     const contents = window.document.querySelectorAll(this.ref)
     const titles = Array.from(contents).map(findHeaders).flat()
+    const pageNumbers = titles.map(InkTableOfContents.pageNumber)
 
     const headersRange =
       titles
@@ -49,25 +60,29 @@ class InkTableOfContents extends LitElement {
         .map((re) => re[1])
         .map((strInt) => parseInt(strInt))
 
-    const titlesWithLevel =
+    const titlesWithLevelAndPageNumbers =
       headersRange
-        .map((level, i) => [titles[i], level])
+        .map((level, i) => [titles[i], level, pageNumbers[i]])
 
     const highestLevel = Math.min(...headersRange) + parseInt(this.depth) - 1
 
     const boundedTitlesWithLevel =
-      titlesWithLevel
+      titlesWithLevelAndPageNumbers
         .filter((entry) => entry[1] <= highestLevel)
 
     return html`
-      <ul id="table-of-contents">
-        ${boundedTitlesWithLevel.map((tl) => this.renderEntry(tl[0], tl[1]))}
-      <ul>
+      <table id="table-of-contents">
+        ${boundedTitlesWithLevel.map((tl) => this.renderEntry(tl[0], tl[1], tl[2]))}
+      <table>
     `
   }
 
-  renderEntry(el, level) {
-    return html`<li class="entry level-${level}"><a href="#${el.id}">${el.innerHTML}</a></li>`
+  renderEntry(el, level, pageNumber) {
+    return html`
+      <tr class="entry level-${level}">
+        <td><a href="#${el.id}">${el.innerHTML}</a></td>
+        <td><a href="#${el.id}">Page ${pageNumber}</a></td>
+      </tr>`
   }
 
 }
