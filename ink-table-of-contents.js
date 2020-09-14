@@ -4,6 +4,14 @@ class InkTableOfContents extends LitElement {
 
   static get styles() {
     return css`
+      #table-of-contents {
+        display: table;
+      }
+
+      ul#table-of-contents {
+        padding-left: 0;
+        list-style: outside none none;
+      }
     `
   }
 
@@ -24,8 +32,6 @@ class InkTableOfContents extends LitElement {
   }
 
   updateTableOfContents(pages) {
-    console.log(`updateElement(${pages})`)
-    console.log(this)
     this.requestUpdate()
   }
 
@@ -36,7 +42,7 @@ class InkTableOfContents extends LitElement {
     const titles = Array.from(contents).map(findHeaders).flat()
 
     return html`
-      <ul>
+      <ul id="table-of-contents">
         ${titles.map((node) => html`<li><a href="#${node.id}">${node.innerHTML}</a></li>`)}
       <ul>
     `
