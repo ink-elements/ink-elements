@@ -31,7 +31,7 @@ class InkTableOfContents extends LitElement {
     window.PagedPolyfill.hooks.afterPreview.hooks = [hook]
   }
 
-  updateTableOfContents(pages) {
+  updateTableOfContents() {
     this.requestUpdate()
   }
 
@@ -47,7 +47,7 @@ class InkTableOfContents extends LitElement {
         .map((h) => /H(\d{1})/.exec(h))
         .filter((re) => re)
         .map((re) => re[1])
-        .map((str) => parseInt(str))
+        .map((strInt) => parseInt(strInt))
 
     const titlesWithLevel = headersRange.map((level, i) => [titles[i], level])
 
