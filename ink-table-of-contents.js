@@ -16,10 +16,24 @@ class InkTableOfContents extends LitElement {
     }
   }
 
+  connectedCallback() {
+    super.connectedCallback()
+
+    const hook = this.updateTableOfContents.bind(this)
+    window.PagedPolyfill.hooks.afterPreview.hooks = [hook]
+  }
+
+  updateTableOfContents(pages) {
+    console.log(`updateElement(${pages})`)
+    console.log(this)
+    this.requestUpdate()
+  }
+
   render() {
-    const content = window.document.querySelectorAll(this.ref)
-    console.log(content)
-    const titles = Array.from(content[0].querySelectorAll('h1,h2,h3,h4,h5,h6'))
+    const findHeaders = (el) => Array.from(el.querySelectorAll('h1,h2,h3,h4,h5,h6'))
+
+    const contents = window.document.querySelectorAll(this.ref)
+    const titles = Array.from(contents).map(findHeaders).flat()
 
     return html`
       <ul>
