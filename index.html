@@ -17,15 +17,25 @@
 
   <p><strong>Ink Elements</strong> is a library of custom elements supporting Paged.js.</p>
 
-  <h1>Table of Contents</h1>
+  <h2>Table of Contents</h2>
 
-  <ink-table-of-contents id="table-of-contents" ref="#content" titles='["h2","h3"]'>
+  <ink-table-of-contents
+    id="table-of-contents"
+    ref=".content"
+    depth="2"
+  >
   </ink-table-of-contents>
 
-  <div id="content">
-    <h2>Header 2</h2>
+  <div class="content">
+    <section id="page-1">
+      <h2 id="header-2">Header 2</h2>
 
-    <h3>Header 3</h3>
+      <h3 id="header-3">Header 3</h3>
+    </section>
+
+    <section id="page-2">
+      <h3 id="header-4">Header 4</h3>
+    </section>
   </div>
 
 </body>
