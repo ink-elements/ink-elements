@@ -89,6 +89,7 @@ export class InkTableOfContents extends LitElement {
   }
 
   renderEntry(el, level, pageNumber) {
+    if (!el.id) el.id = Math.random().toString(36).substring(7)
     return html`
       <tr class="entry level-${level}">
         <td class="title"><a href="#${el.id}">${el.innerHTML}</a></td>
