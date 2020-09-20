@@ -1,6 +1,9 @@
 import { LitElement, html, css } from 'lit-element'
+import { PagedjsElement } from './node_modules/pagedjs-wc-compat/lib/PagedjsElement.js'
 
-export class InkTableOfContents extends LitElement {
+var contents = undefined
+
+export class InkTableOfContents extends PagedjsElement(LitElement) {
 
   static get styles() {
     return css`
@@ -36,31 +39,40 @@ export class InkTableOfContents extends LitElement {
   }
 
   static pageNumber(element) {
-    const page = element.closest('div[class~="pagedjs_page"]')
+    console.log(`InkTableOfContents.pageNumber()`)
+    // const page = element.closest('div[class~="pagedjs_page"]')
 
-    if (page && page.getAttribute('data-page-number')) {
-      return page.getAttribute('data-page-number')
-    } else {
-      console.error(`[<ink-table-of-contents>] Could not find page for reference ${element.id} in document`)
-    }
+    // if (page && page.getAttribute('data-page-number')) {
+    //   return page.getAttribute('data-page-number')
+    // } else {
+    //   console.error(`[<ink-table-of-contents>] Could not find page for reference ${element.id} in document`)
+    // }
+  }
+
+  constructor() {
+    super()
+    console.log(`constructor()`)
   }
 
   connectedCallback() {
     super.connectedCallback()
-
-    const hook = this.updateTableOfContents.bind(this)
-    window.PagedPolyfill.hooks.afterPreview.hooks = [hook]
-  }
-
-  updateTableOfContents() {
-    this.requestUpdate()
+    console.log(this)
+    console.log(`InkTableOfContents.connectedCallback()`)
   }
 
   render() {
+    console.log(`InkTableOfContents.render()`)
+    console.log(window)
     const findHeaders = (el) => Array.from(el.querySelectorAll('h1,h2,h3,h4,h5,h6'))
 
-    const contents = Array.from(window.document.querySelectorAll(this.ref))
+    if (!contents) {
+      contents = Array.from(window.document.body.querySelectorAll(this.ref))
+    }
+    console.log('contents =')
+    console.log(contents)
     const titles = contents.map(findHeaders).flat()
+    console.log('titles =')
+    console.log(titles)
     const pageNumbers = titles.map(InkTableOfContents.pageNumber)
 
     const headersRange =
@@ -100,4 +112,5 @@ export class InkTableOfContents extends LitElement {
 
 }
 
+console.log(`customElements.define(InkTableOfContents)`)
 customElements.define(InkTableOfContents.is, InkTableOfContents)
