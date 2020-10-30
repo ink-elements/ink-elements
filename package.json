@@ -19,7 +19,7 @@
   "dependencies": {
     "@aybolit/bootstrap": "^0.1.0",
     "lit-element": "^2.4.0",
-    "pagedjs": "^0.1.42"
+    "pagedjs": "^0.1.43"
   },
   "devDependencies": {
     "es-dev-server": "^1.57.4",
