@@ -32,11 +32,18 @@ class InkDocument extends LitElement {
 
   connectedCallback() {
     super.connectedCallback()
+
+    const customElements = document.querySelector('html-import')
+    customElements.addEventListener('wc-ready', this.pageDocument)
+  }
+
+  pageDocument() {
+    console.log('pageDocument()')
     const paged = new Previewer()
     const stylesheets = Array.from(document.styleSheets).map(css => css.href)
 
-    paged.preview(document.querySelector('ink-doc').innerHTML, stylesheets, this.shadowDocument).then((flow) => {
-      document.querySelector('ink-doc').remove()
+    const html = document.querySelector('ink-doc').innerHTML
+    paged.preview(html, stylesheets, this.shadowDocument).then((flow) => {
       this.dispatchEvent(new PagedDocument('paged-doc', flow))
     })
   }
